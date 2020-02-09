@@ -2,18 +2,18 @@
 # include <string.h>
 #define MAX 10
 //struct USER user[MAX];
-int i=0,k;//i用来判断哪个用户
+int i=0,flag=0;//i用来判断哪个用户
 char c[10];//保存输出数字
 char b[10];//保存输出文字
 //函数声明
-void zhengshu(,char store[10]);
-int yonghu(struct USER user[MAX],char store[10],int k);
-void dengyu(struct USER user[MAX],char store[10],int k);
-void zhengjia(struct USER user[MAX],char store[10],int k);
-void jiansao(struct USER user[MAX],char store[10],int k);
-void dayu(struct USER user[MAX],char store[10],int k);
-void kankan(struct USER user[MAX],char store[10],int k);
-void ruguo(struct USER user[MAX],char store[10],int k);
+void zhengshu(struct USER user[MAX],char store[10]);
+int yonghu(struct USER user[MAX],char store[10]);
+void dengyu(struct USER user[MAX],char store[10]);
+void zhengjia(struct USER user[MAX],char store[10]);
+void jiansao(struct USER user[MAX],char store[10]);
+void dayu(struct USER user[MAX],char store[10]);
+void kankan(struct USER user[MAX],char store[10]);
+void ruguo(struct USER user[MAX],char store[10]);
 void ze(struct USER user[MAX],char store[10]);
 void fozhe(struct USER user[MAX],char store[10]);
 void panduan(struct USER user[MAX],char store[10]);
@@ -23,29 +23,28 @@ void exc2(char s[10]);//数字转化为汉字
 void exc3(char s[10]);//取掉引号
 
 struct USER{
-    char name[20];//zhan存变量名
-    char cum[20];//保存文字，十
+    char name[20];//保存用户名
+    char cum[20];//暂时文字，十
 	int  sum[20];//保存数字
 }user[MAX];
 
 int main()
 {  
 	char store[20];//暂时存放文字
-	 store[0]='\0'; c[0]='\0';
+	 store[0]='\0';
     while(scanf("%s",store))//整数
 	{
     if(strcmp(store,"整数")==0){
      zhengshu(user,store);i++;
 	}
     if(strcmp(store,"如果")==0){
-     ruguo(user,store,i);
+     ruguo(user,store);
 	}
     if(strcmp(store,"看看")==0){
-     kankan(user,store,i);
+     kankan(user,store);
 	}
-	if(yonghu(user,store,i)!=0){ //判断是否输入的是用户
-    panduan(user,store,i);//进入判断
-	printf("1次");
+	if(yonghu(user,store)!=0){ //判断是否输入的是用户
+    panduan(user,store);//进入判断
     }
 	}
 }
@@ -54,98 +53,98 @@ void zhengshu(struct USER user[MAX],char store[10])
 {
   scanf("%s",store);//输入用户
   strcpy(user[i].name,store);//保存变量名
-  panduan(user,store,i);
+
 }
 
-void panduan(struct USER user[MAX],char store[10],int k){ //判断是否进行运算,比较
+void panduan(struct USER user[MAX],char store[10]){ //判断是否进行运算,比较
  scanf("%s",store);//判断值
  if(strcmp(store,"等于")==0){
-     dengyu(user,store,k);
+     dengyu(user,store);
 	}
  if(strcmp(store,"减少")==0){
-		printf("2");
-     jiansao(user,store,k);
+     jiansao(user,store);
 	}
 	if(strcmp(store,"增加")==0){
-		printf("1");
-     zhengjia(user,store,k);
+     zhengjia(user,store);
 	}
 	if(strcmp(store,"大于")==0){
-     dayu(user,store,k);
+     dayu(user,store);
 	}
 //printf("3");
 }
 
-int yonghu(struct USER user[MAX],char store[10],int k){//判断是哪个用户
+int yonghu(struct USER user[MAX],char store[10]){//判断是哪个用户
    for(i=0;i<20;i++){
 	if(store==user[i].name[0]){
-		break;
+       return 1;break;
+	
 }
-	return 1;
 }
+   return 0;
 }
 
-void dengyu(struct USER user[MAX],char store[10],int k){
+void dengyu(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
-user[k].sum[0]=exc1(store);//赋值
+user[i].sum[0]=exc1(store);//赋值
 //printf("%d",user[k].sum[0]);
 }
 
-void zhengjia(struct USER user[MAX],char store[10],int k){
+void zhengjia(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
-user[k].sum[0]+=exc1(store);//加法
-printf("1");
+user[i].sum[0]+=exc1(store);//加法
+
 }
 
-void jiansao(struct USER user[MAX],char store[10],int k){
+void jiansao(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
-user[k].sum[0]-=exc1(store);//减法
-printf("2");
+user[i].sum[0]-=exc1(store);//减法
+
 }
 
-void dayu(struct USER user[MAX],char store[10],int k){
+void dayu(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
-if(user[k].sum[0]>exc1(store))
+if(user[i].sum[0]>exc1(store))
 {
-ze(user,store,i);
+ze(user,store);
+
 }
 else{
-fozhe(user,store,i);
+fozhe(user,store);
 }
 }
 
-void kankan(struct USER user[MAX],char store[10],int k){
+void kankan(struct USER user[MAX],char store[10]){
 scanf("%s",store);//判断是否输入的是用户
-if(yonghu(user,store,k)!=0){
-   exc2(user[k].sum[0]);
+if(yonghu(user,store)!=0){
+   exc2(user[i].sum[0]);
    printf("%s\n",c);
 }else{
 exc3(store);//去掉双引号
-printf("%s\n",store);
+printf("%s\n",b);
 }
 }
 
 void ruguo(struct USER user[MAX],char store[10]){
 scanf("%s",store);//小杨年龄
-if(yonghu(user,store,i)!=0){
-	panduan(user,store,i);//进入判断
+if(yonghu(user,store)!=0){
+	panduan(user,store);//进入判断
 }
 }
 
 void ze(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
 if(strcmp(store,"看看")==0){
-kankan(user,store,i);//输入为看看
+kankan(user,store);//输入为看看
 }
-if(yonghu(user,store,i)!=0){//输入为用户
-  panduan(user,store,i);//进入判断
+if(yonghu(user,store)!=0){//输入为用户
+  panduan(user,store);//进入判断
 }
 }
 
 void fozhe(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
 if(strcmp(store,"看看")==0){
-kankan(user,store,i);
+kankan(user,store);
 }else{
 exc3(store);
 printf("%s",b);
