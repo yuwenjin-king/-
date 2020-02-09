@@ -70,7 +70,7 @@ void panduan(struct USER user[MAX],char store[10]){ //判断是否进行运算,�
 	if(strcmp(store,"大于")==0){
      dayu(user,store);
 	}
-//printf("3");
+
 }
 
 int yonghu(struct USER user[MAX],char store[10]){//判断是哪个用户
