@@ -19,7 +19,7 @@ void fozhe(struct USER user[MAX],char store[10]);
 void panduan(struct USER user[MAX],char store[10]);
 
 int exc1(char s[10]);//汉字转化为数字
-void exc2(char s[10]);//数字转化为汉字
+void exc2(int sum);//数字转化为汉字
 void exc3(char s[10]);//取掉引号
 
 struct USER{
@@ -75,13 +75,14 @@ void panduan(struct USER user[MAX],char store[10]){ //判断是否进行运算,�
 
 int yonghu(struct USER user[MAX],char store[10]){//判断是哪个用户
    for(i=0;i<20;i++){
-	if(store==user[i].name[0]){
+	if(store=user[i].name[0]){
        return 1;break;
-	
+	  
+	} 
 }
+    return 0;
 }
-   return 0;
-}
+
 
 void dengyu(struct USER user[MAX],char store[10]){
 scanf("%s",store);//输入值
